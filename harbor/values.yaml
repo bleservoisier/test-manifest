@@ -129,7 +129,7 @@ ipFamily:
 ## Use "proxy" to use a deploy NGINX proxy in front of Harbor services
 ## Use "ingress" to use an Ingress Controller as proxy
 ##
-exposureType: proxy
+exposureType: ingress
 
 ## Service parameters
 ##
