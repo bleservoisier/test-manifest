@@ -80,7 +80,7 @@ adminPassword: "toto"
 ## 4) if "exposureType" is "proxy" and "service.type" is "LoadBalancer",
 ## the "domain" should be the LoadBalancer IP
 ##
-externalURL: https://harbor.isf
+externalURL: https://core.harbor.isf
 ## Note: If Harbor is exposed via Ingress, the NGINX server will not be used
 ## @param proxy.httpProxy The URL of the HTTP proxy server
 ## @param proxy.httpsProxy The URL of the HTTPS proxy server
@@ -129,7 +129,7 @@ ipFamily:
 ## Use "proxy" to use a deploy NGINX proxy in front of Harbor services
 ## Use "ingress" to use an Ingress Controller as proxy
 ##
-exposureType: ingress
+exposureType: proxy
 
 ## Service parameters
 ##
@@ -217,7 +217,7 @@ ingress:
     controller: default
     ## @param ingress.core.hostname Default host for the ingress record
     ##
-    hostname: core.harbor.domain
+    hostname: core.harbor.isf
     ## @param ingress.core.annotations [object] Additional annotations for the Ingress resource. To enable certificate autogeneration, place here your cert-manager annotations.
     ## Use this parameter to set the required annotations for cert-manager, see
     ## ref: https://cert-manager.io/docs/usage/ingress/#supported-annotations
@@ -324,7 +324,7 @@ ingress:
     controller: default
     ## @param ingress.notary.hostname Default host for the ingress record
     ##
-    hostname: notary.harbor.domain
+    hostname: notary.harbor.isf
     ## @param ingress.notary.annotations [object] Additional annotations for the Ingress resource. To enable certificate autogeneration, place here your cert-manager annotations.
     ## Use this parameter to set the required annotations for cert-manager, see
     ## ref: https://cert-manager.io/docs/usage/ingress/#supported-annotations
@@ -806,7 +806,7 @@ nginx:
     existingSecret: ""
     ## @param nginx.tls.commonName The common name used to generate the self-signed TLS certificates
     ##
-    commonName: core.harbor.domain
+    commonName: core.harbor.isf
   ## @param nginx.behindReverseProxy If NGINX is behind another reverse proxy, set to true
   ## if the reverse proxy already provides the 'X-Forwarded-Proto' header field.
   ## This is, for example, the case for the OpenShift HAProxy router.
